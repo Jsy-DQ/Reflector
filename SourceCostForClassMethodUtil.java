@@ -32,7 +32,7 @@ public class SourceCostForClassMethodUtil {
 		}
 	}
 
-	// 首个为数字
+	// params[0] must be Integer or null
 	public static Object[][][] getParamsAndClasses(Object... params) {
 		Object[] obj = params;
 		if (obj == null){
