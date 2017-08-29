@@ -6,14 +6,17 @@ import util.exception.runtime.FirstIntegerIndexOutOfBoundsException;
 import util.exception.runtime.IllegalFirstParamException;
 
 /**
- * @author Jsy.DQ too lazy to write code
+ * @author Jsy.DQ 
+ * too lazy to write code
  * gitHubTest
  */
 public class SourceCostForClassMethodUtil {
+	private static Runtime r = Runtime.getRuntime();
+
 	public static void main(String[] args) {
-		// example 
+		// example 一个脏婆
 		long temp = System.currentTimeMillis();
-		Object[][][] paramsAndClasses = getParamsAndClasses(new Object[] { 0, "321", 123l, 3213f });
+		Object[][][] paramsAndClasses = getParamsAndClasses(null);
 		Object[][] paramsObj = paramsAndClasses[0];
 		Class<?>[][] paramsClass = (Class[][]) paramsAndClasses[1];
 		for (Object[][] i : paramsAndClasses) {
@@ -29,11 +32,16 @@ public class SourceCostForClassMethodUtil {
 		}
 	}
 
-	// params[0] must be int
+	// 首个为数字
 	public static Object[][][] getParamsAndClasses(Object... params) {
 		Object[] obj = params;
-		if (obj == null)
-			return null;
+		if (obj == null){
+			Object[][][] paramsAndClasses = new Object[2][][];
+			paramsAndClasses[0] = new Object[2][];
+			// 定义第二维的类型，强转准备
+			paramsAndClasses[1] = new Class[2][];
+			return paramsAndClasses;			
+		}
 		if (obj.getClass().equals(int.class))
 			throw new IllegalFirstParamException(
 					"the type of firstParam must be int.class to differentiate constructorParams and methodParams");
