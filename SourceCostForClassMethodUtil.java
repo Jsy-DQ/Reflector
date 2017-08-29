@@ -68,7 +68,7 @@ public class SourceCostForClassMethodUtil {
 		return paramsAndClasses;
 	}
 	
-	public Object doDeclearedReflect(Class<?> targetClass, String methodName, Object... params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, InstantiationException{
+	public static Object doDeclearedReflect(Class<?> targetClass, String methodName, Object... params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, InstantiationException{
 		if(targetClass==null||methodName==null)
 			throw new NullPointerException();
 		Object[][][] paramsAndClasses=getParamsAndClasses(params);
@@ -76,7 +76,7 @@ public class SourceCostForClassMethodUtil {
 		Class<?>[][] paramsClass=(Class[][]) paramsAndClasses[1];
 		return targetClass.getDeclaredMethod(methodName, paramsClass[1]).invoke(targetClass.getConstructor(paramsClass[0]).newInstance(paramsObj[0]), paramsObj[1]);
 	}
-	public Object doDeclearedReflect(Object targetObj, String methodName, Object... params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, InstantiationException{
+	public static Object doDeclearedReflect(Object targetObj, String methodName, Object... params) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, InstantiationException{
 		if(targetObj==null||methodName==null)
 			throw new NullPointerException();
 		Class<?> targetClass=targetObj.getClass();
