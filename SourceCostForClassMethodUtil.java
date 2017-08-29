@@ -14,7 +14,7 @@ public class SourceCostForClassMethodUtil {
 	private static Runtime r = Runtime.getRuntime();
 
 	public static void main(String[] args) {
-		// example 一个脏婆
+		// example
 		long temp = System.currentTimeMillis();
 		Object[][][] paramsAndClasses = getParamsAndClasses(null);
 		Object[][] paramsObj = paramsAndClasses[0];
