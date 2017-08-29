@@ -12,10 +12,7 @@ import util.exception.runtime.IllegalFirstParamException;
 /**
  * @author Jsy.DQ
  * too lazy to write code
- * 
- * 其他还有很多类似的
- * 因为老是用到反射，所以封装了个
- * 看似很多，其实并不多
+ * gitHubTest
  */
 public class SourceCostForClassMethodUtil {
 	private static Runtime r = Runtime.getRuntime();
