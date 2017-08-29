@@ -6,9 +6,7 @@ import util.exception.runtime.FirstIntegerIndexOutOfBoundsException;
 import util.exception.runtime.IllegalFirstParamException;
 
 /**
- * @author Jsy.DQ 
- * too lazy to write code
- * gitHubTest
+ * @author Jsy.DQ too lazy to write code gitHubTest
  */
 public class SourceCostForClassMethodUtil {
 	private static Runtime r = Runtime.getRuntime();
@@ -16,7 +14,7 @@ public class SourceCostForClassMethodUtil {
 	public static void main(String[] args) {
 		// example
 		long temp = System.currentTimeMillis();
-		Object[][][] paramsAndClasses = getParamsAndClasses(null);
+		Object[][][] paramsAndClasses = getParamsAndClasses(new Object[] { 3, "123", 333l, 333f });
 		Object[][] paramsObj = paramsAndClasses[0];
 		Class<?>[][] paramsClass = (Class[][]) paramsAndClasses[1];
 		for (Object[][] i : paramsAndClasses) {
@@ -25,7 +23,7 @@ public class SourceCostForClassMethodUtil {
 					for (Object k : j) {
 						System.out.println(k);
 					}
-				else{
+				else {
 					System.out.println(j);
 				}
 			}
@@ -35,16 +33,16 @@ public class SourceCostForClassMethodUtil {
 	// params[0] must be Integer or null
 	public static Object[][][] getParamsAndClasses(Object... params) {
 		Object[] obj = params;
-		if (obj == null){
+		if (obj == null) {
 			Object[][][] paramsAndClasses = new Object[2][][];
 			paramsAndClasses[0] = new Object[2][];
 			// 定义第二维的类型，强转准备
 			paramsAndClasses[1] = new Class[2][];
-			return paramsAndClasses;			
+			return paramsAndClasses;
 		}
-		if (obj.getClass().equals(int.class))
+		if (!obj[0].getClass().equals(Integer.class))
 			throw new IllegalFirstParamException(
-					"the type of firstParam must be int.class to differentiate constructorParams and methodParams");
+					"the type of firstParam must be Integer to differentiate constructorParams and methodParams");
 		if ((int) obj[0] > obj.length - 1 || (int) obj[0] < 0)
 			throw new FirstIntegerIndexOutOfBoundsException("IndexOutOfRange");
 		// 构造方法变量还是方法变量|参数还是参数类型 0参数|第几个
@@ -60,12 +58,13 @@ public class SourceCostForClassMethodUtil {
 				paramsAndClasses[1][0][i] = obj[i + 1].getClass();
 			}
 		}
-		if ((int) obj[0] != obj.length - 1)
+		if ((int) obj[0] != obj.length - 1){
 			paramsAndClasses[0][1] = new Object[obj.length - (int) obj[0] - 1];
-		paramsAndClasses[1][1] = new Class[obj.length - (int) obj[0] - 1];
-		for (int i = 0; i < paramsAndClasses[0][1].length; i++) {
-			paramsAndClasses[0][1][i] = obj[(int) obj[0] + i + 1];
-			paramsAndClasses[1][1][i] = obj[(int) obj[0] + i + 1].getClass();
+			paramsAndClasses[1][1] = new Class[obj.length - (int) obj[0] - 1];
+			for (int i = 0; i < paramsAndClasses[0][1].length; i++) {
+				paramsAndClasses[0][1][i] = obj[(int) obj[0] + i + 1];
+				paramsAndClasses[1][1][i] = obj[(int) obj[0] + i + 1].getClass();
+			}			
 		}
 
 		return paramsAndClasses;
