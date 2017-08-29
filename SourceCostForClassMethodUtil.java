@@ -7,14 +7,13 @@ import util.exception.runtime.IllegalFirstParamException;
 
 /**
  * @author Jsy.DQ too lazy to write code
- * 
- *         其他还有很多类似的 因为老是用到反射，所以封装了个 看似很多，其实并不多
+ * gitHubTest
  */
 public class SourceCostForClassMethodUtil {
 	private static Runtime r = Runtime.getRuntime();
 
 	public static void main(String[] args) {
-		// example 一个脏婆
+		// example 
 		long temp = System.currentTimeMillis();
 		Object[][][] paramsAndClasses = getParamsAndClasses(new Object[] { 0, "321", 123l, 3213f });
 		Object[][] paramsObj = paramsAndClasses[0];
@@ -32,7 +31,7 @@ public class SourceCostForClassMethodUtil {
 		}
 	}
 
-	// 首个为数字
+	// params[0] must be int
 	public static Object[][][] getParamsAndClasses(Object... params) {
 		Object[] obj = params;
 		if (obj == null)
