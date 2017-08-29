@@ -35,7 +35,7 @@ public class SourceCostForClassMethodUtil {
 	// params[0] must be Integer ||params can be null
 	public static Object[][][] getParamsAndClasses(Object... params) {
 		Object[] obj = params;
-		if (obj == null) {
+		if (obj == null||obj.length==0) {
 			Object[][][] paramsAndClasses = new Object[2][][];
 			paramsAndClasses[0] = new Object[2][];
 			// 定义第二维的类型，强转准备
