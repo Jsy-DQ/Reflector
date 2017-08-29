@@ -10,8 +10,6 @@ import util.exception.runtime.IllegalFirstParamException;
  * gitHubTest
  */
 public class SourceCostForClassMethodUtil {
-	private static Runtime r = Runtime.getRuntime();
-
 	public static void main(String[] args) {
 		// example 
 		long temp = System.currentTimeMillis();
