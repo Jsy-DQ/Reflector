@@ -30,7 +30,7 @@ public class SourceCostForClassMethodUtil {
 		}
 	}
 
-	// params[0] must be Integer or null
+	// params[0] must be Integer ||params can be null
 	public static Object[][][] getParamsAndClasses(Object... params) {
 		Object[] obj = params;
 		if (obj == null) {
@@ -58,13 +58,13 @@ public class SourceCostForClassMethodUtil {
 				paramsAndClasses[1][0][i] = obj[i + 1].getClass();
 			}
 		}
-		if ((int) obj[0] != obj.length - 1){
+		if ((int) obj[0] != obj.length - 1) {
 			paramsAndClasses[0][1] = new Object[obj.length - (int) obj[0] - 1];
 			paramsAndClasses[1][1] = new Class[obj.length - (int) obj[0] - 1];
 			for (int i = 0; i < paramsAndClasses[0][1].length; i++) {
 				paramsAndClasses[0][1][i] = obj[(int) obj[0] + i + 1];
 				paramsAndClasses[1][1][i] = obj[(int) obj[0] + i + 1].getClass();
-			}			
+			}
 		}
 
 		return paramsAndClasses;
