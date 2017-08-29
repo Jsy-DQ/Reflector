@@ -6,13 +6,15 @@ import util.exception.runtime.FirstIntegerIndexOutOfBoundsException;
 import util.exception.runtime.IllegalFirstParamException;
 
 /**
- * @author Jsy.DQ too lazy to write code gitHubTest
+ * @author Jsy.DQ 
+ * too lazy to write code 
+ * gitHubTest
  */
 public class SourceCostForClassMethodUtil {
 	private static Runtime r = Runtime.getRuntime();
 
+	// example
 	public static void main(String[] args) {
-		// example
 		long temp = System.currentTimeMillis();
 		Object[][][] paramsAndClasses = getParamsAndClasses(new Object[] { 3, "123", 333l, 333f });
 		Object[][] paramsObj = paramsAndClasses[0];
